@@ -15,17 +15,16 @@ const images = [
 
 const galleryRef = document.querySelector(".gallery");
 
-const makeNewGallery = (imagesArrey) => {
-  return imagesArrey.map(({ url, alt }) => {
-    const itemRef = document.createElement("li");
-    itemRef.classList(".list-item");
-    const imageRef = document.createElement("img");
-    imageRef.setAttribute(url, url);
-    imageRef.setAttribute(alt, alt);
-    // console.log(listItem);
-    galleryRef.insertAdjacentHTML("afterbegin");
-  });
-};
+const newGallery = images.map(({url, alt}) => `<li class="list-item"><img src=${url}alt=${alt}/></li>`
+).join("");
+
+galleryRef.insertAdjacentHTML("afterbegin", newGallery);
+
+galleryRef.style.display = "flex";
+const stylesForFirstChild = galleryRef.firstElementChild;
+stylesForFirstChild.style.marginRight = "15px";
+const stylesForLastChild = galleryRef.lastElementChild;
+stylesForLastChild.style.marginLeft = "15px";
 
 // Напиши скрипт для создания галереи изображений по массиву данных. В HTML есть список ul.gallery.
 
